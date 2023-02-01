@@ -111,7 +111,7 @@ ipads.forEach((ipad) => {
     let colorList = '';
     ipad.colors.forEach((color) => {
         colorList += `<li style = "background-color: ${color};"></li>`
-    })
+    });
 
 
     itemEl.innerHTML = /*HTML*/ `
@@ -126,7 +126,33 @@ ipads.forEach((ipad) => {
         <p class = "price">₩${ipad.price.toLocaleString('en-US')}부터</p>
         <button class = "btn">구입하기</button>
         <a href="${ipad.url}" class = "link">더 알아보기</a>
-    `
+    `;
     
     itemsEl.append(itemEl);
-})
+});
+
+const navigationsEl = document.querySelector('footer .navigations');
+navigations.forEach((nav) => {
+    const mapEl = document.createElement('div');
+    mapEl.classList.add('map');
+
+    let mapList = '';
+    nav.maps.forEach((map) => {
+        mapList += /* HTML*/`
+            <li>
+                <a href = "${map.url}">${map.name}</a>
+            </li>
+        `;
+    });
+
+    mapEl.innerHTML = /*HTML*/`
+        <h3>
+            <span class = 'text'>${nav.title}</span>
+        </h3>
+        <ul>
+            ${mapList}
+        </ul>
+    `;
+
+    navigationsEl.append(mapEl);
+});
